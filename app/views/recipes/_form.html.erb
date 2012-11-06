@@ -1,0 +1,35 @@
+<%= form_for(@recipe, :html => { :multipart => true }) do |f| %>
+
+<%= f.select :kitchen_id, Kitchen.all.map { |k| [k.name, k.id] }, :include_blank => true %>
+
+ 
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :steps %>
+<%= f.text_area :steps %>
+
+<%= f.label :photo %>
+<%= f.file_field :photo %>
+<br>
+OR directly paste image link:
+<%= f.text_field :remote_photo_url %>
+
+<%= f.label :serves %>
+<%= f.text_field :serves %>
+
+<%= f.label :rating %>
+<%= f.select :rating, (1..5).to_a %>
+
+<br>
+Ingredients:
+<% Ingredient.all.each do |ingredient| %>
+<div>
+	<span><%= "#{ingredient.name}: #{ingredient.amount} #{ingredient.unit}"%></span>
+	<%= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, @recipe.ingredients.include?(ingredient) %>
+</div>
+<% end %>
+<br>
+<%= f.submit %>
+
+<% end %>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dinnertyme</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+	<div class="navbar">
+    	<div class="navbar-inner">
+    		<a class="brand" href="<%= root_path %>">DinnerTyme</a>
+    		<ul class="nav">
+	    		<li><%= link_to 'Kitchens', kitchens_path %></li>
+	    		<li><%= link_to 'Recipes', recipes_path %></li>
+	    		<li><%= link_to 'Ingredients', ingredients_path %></li>
+    		</ul>
+   		</div>
+    </div>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
+
+
+
+	<%= yield %>
+  <div class="container">
+</body>
+</html>

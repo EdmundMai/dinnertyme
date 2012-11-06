@@ -1,0 +1,18 @@
+
+<div class="recipesheading">
+	<h1>Recipes</h1>
+	<%= link_to "Add recipe", new_recipe_path %>
+
+	<%= form_tag recipes_path, :method => "get" do %>
+		<%= label_tag(:search, "Search recipe name") %>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	<% end %>
+</div>
+<% @recipes.each do |recipe| %>
+<%# binding.pry %>
+<div class="recipepic">
+<%= link_to recipe.name, recipe_path(recipe) %> by <%= recipe.kitchen ? link_to(recipe.kitchen.name, kitchen_path(recipe.kitchen)) : link_to("(Kitchen not specified)", edit_recipe_path(recipe)) %><br>
+<%= link_to (recipe.photo.thumb.url ? image_tag(recipe.photo.thumb.url) : image_tag('questionmark.png', :height => "300", :width => "300")), recipe_path(recipe) %>
+</div>
+<% end %>

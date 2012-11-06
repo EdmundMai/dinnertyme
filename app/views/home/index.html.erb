@@ -1,0 +1,16 @@
+    <div class="hero-unit">
+    <h1>Welcome to DinnerTyme!</h1>
+    <p>Browse through different kitchens, each with their own unique themes and recipes. Or create your own!</p>
+    <p>
+    <a class="btn btn-primary btn-large" href="<%= kitchens_path %>">
+    Browse Kitchens!
+    </a>
+    </p>
+    </div>
+
+    <% @recipes.each do |recipe| %>
+    <div class="recipepic">
+		<%= recipe.name %> by <%= recipe.kitchen ? link_to(recipe.kitchen.name, kitchen_path(recipe.kitchen)) : link_to("No kitchen", edit_recipe_path(recipe)) %><br>
+		<%= link_to (recipe.photo.thumb.url ? image_tag(recipe.photo.thumb.url) : image_tag('questionmark.png', :height => "300", :width => "300")), recipe_path(recipe) %>
+	</div>
+<% end %>

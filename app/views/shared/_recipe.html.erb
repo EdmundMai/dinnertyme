@@ -1,0 +1,4 @@
+<div class="recipepic">
+<%= link_to recipe.name, recipe_path(recipe) %> by <%= recipe.kitchen ? link_to(recipe.kitchen.name, kitchen_path(recipe.kitchen)) : link_to("Kitchen not specified", edit_recipe_path(recipe)) %><br>
+<%= link_to (recipe.photo.thumb.url ? image_tag(recipe.photo.thumb.url) : image_tag('questionmark.png', :height => "300", :width => "300")), recipe_path(recipe) %>
+</div>

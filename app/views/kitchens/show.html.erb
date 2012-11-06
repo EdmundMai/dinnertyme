@@ -1,0 +1,7 @@
+<div>
+<h1><%= @kitchen.name %></h1>
+<%= link_to "View all Kitchens", kitchens_path %>
+</div>
+
+<%= render :partial => 'shared/recipe', :collection => @kitchen.recipes, :as => :recipe %>
+

@@ -1,0 +1,25 @@
+
+<div class="span12">
+	<h1>Kitchens</h1>
+	
+	<div class="createkitchendiv">
+		<%= link_to "Create new kitchen", new_kitchen_path, :id => "createkitchenlink" %>
+
+		<div class="newkitchenform">
+		<%= form_for(:kitchen, :url => kitchens_path, :remote => true) do |f| %>
+
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+		<br>
+		<%= f.submit %>
+
+		<% end %>
+		</div>
+	</div>
+
+<div class="kitchenholder offset1">
+<%= render :partial => 'kitchen', :collection => @kitchens, :as => :kitchen %>
+</div>
+
+</div>

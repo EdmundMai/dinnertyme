@@ -1,0 +1,48 @@
+
+<div class="recipeheading">
+<h1><%= @recipe.name %></h1>
+<%= link_to "Edit recipe", edit_recipe_path(@recipe) %> |
+<%= link_to "Delete recipe", recipe_path(@recipe), :method => :delete, :confirm => "Are you sure?" %>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+	<div class="span6">
+		<%= image_tag(@recipe.photo.url ? @recipe.photo.url : "questionmark.png", :class => "recipepic") %>
+	</div>
+
+<div class="span5">
+<div>
+	<h3>By <%= @recipe.kitchen ? (link_to @recipe.kitchen.name, kitchen_path(@recipe.kitchen)) : (link_to "Not specified", edit_recipe_path(@recipe)) %></h3>
+</div>
+
+<div>
+	<h3>Ingredients:</h3>
+	<% @recipe.ingredients.each do |ingredient| %>
+	<p><%= full_ingredient_name(ingredient) %>
+	<% end %>
+</div>
+
+<div>
+	<h2>Directions:</h2>
+	<%= @recipe.steps %>
+</div>
+<div>
+	<h4>Serves: <b><%= pluralize(@recipe.serves, "person") %></b>
+</div>
+
+<div>
+	<h4>Rating:
+	<% if @recipe.rating %>
+	<% @recipe.rating.times do |i| %>
+		<%= image_tag("star.jpg", :size => "50x50") %>
+	<% end %>
+	<% else %>
+		<%= link_to "No rating", edit_recipe_path(@recipe) %>
+	<% end %>
+	</h4>
+</div>
+</div>
+
+</div>
+</div>
