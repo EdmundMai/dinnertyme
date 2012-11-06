@@ -8,6 +8,7 @@
     </p>
     </div>
 
+    <h2>Recently added recipes:</h2>
     <% @recipes.each do |recipe| %>
     <div class="recipepic">
 		<%= recipe.name %> by <%= recipe.kitchen ? link_to(recipe.kitchen.name, kitchen_path(recipe.kitchen)) : link_to("No kitchen", edit_recipe_path(recipe)) %><br>
