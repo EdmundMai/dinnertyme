@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
-	  offset = rand(Recipe.count).to_i
+	  offset = rand(Recipe.count).ceil
 	  @recipes = Recipe.find(:all, :limit => 3, :order => offset)
 	end
 
