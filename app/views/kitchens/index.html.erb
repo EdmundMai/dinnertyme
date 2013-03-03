@@ -5,18 +5,18 @@
 	<div class="createkitchendiv">
 		<%= link_to "Create new kitchen", new_kitchen_path, :id => "createkitchenlink" %>
 
-		<div class="newkitchenform">
-		<%= form_for(:kitchen, :url => kitchens_path, :remote => true) do |f| %>
+	
+			<%= form_tag "/kitchens/create", :method => :post, :remote => true do %>
 
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+			<div class="blahblah">
+			<%= render :partial => "box" %>
 
-		<br>
-		<%= f.submit %>
+			</div>
+			<%= submit_tag "Submit" %>
 
 		<% end %>
 		</div>
-	</div>
+
 
 <div class="kitchenholder offset1">
 <%= render :partial => 'kitchen', :collection => @kitchens, :as => :kitchen %>

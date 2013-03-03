@@ -17,12 +17,10 @@
 
 $(document).ready(function() {
 
-$('.newkitchenform').hide();
 
 $('#createkitchenlink').on('click', function(e){
 	e.preventDefault();
-	$('#createkitchenlink').hide();
-	$('.newkitchenform').show();
+	$('.blahblah').append("<input type='text' name='kitchen[][name]'>");
 });
 
 $('.kitchenbox').mouseover(function(){

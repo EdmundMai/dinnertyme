@@ -6,7 +6,7 @@ Dinnertyme::Application.routes.draw do
 
   get "kitchens/new"
 
-  get "kitchens/create"
+  post "kitchens/create"
 
   get "kitchens/edit"
 

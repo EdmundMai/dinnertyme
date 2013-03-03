@@ -1,1 +1,5 @@
-$(".kitchenholder").append("<%= j render(@kitchen) %>");
+$(".createkitchendiv").html("");
+$(".createkitchendiv").append("<%= j link_to 'Create new kitchen', new_kitchen_path, :id => 'createkitchenlink' %>");
+$(".kitchenholder").append("<%= j render :partial => 'kitchens/kitchen', :collection => @kitchens, :as => :kitchen %>");
+
+

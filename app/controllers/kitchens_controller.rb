@@ -9,14 +9,21 @@ class KitchensController < ApplicationController
 
   def new
     @kitchen = Kitchen.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
-    @kitchen = Kitchen.new(params[:kitchen])
-    respond_to do |format|
-      if @kitchen.save
-        format.js
+    @kitchens = []
+    params[:kitchen].each do |kitchen|
+      new_kitchen = Kitchen.new(kitchen)
+      if new_kitchen.save
+        @kitchens << new_kitchen
       end
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
